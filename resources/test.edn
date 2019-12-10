@@ -1,0 +1,17 @@
+{:clomon/reporting {:log/file  "clomon.log"
+                    :log/email "logs+clomon@your.email.address"}
+ :clomon/dbspec    {:database-name #or [#env DB_NAME "clomon_test"]
+                    :username      #or [#env DB_USER "clomon"]
+                    :password      #or [#env DB_PASSWORD "test password"]
+                    :db/clean      false}
+ :clomon/server    {:port #or [#env SERVER_PORT 8081]
+                    :prefix #or [#env SERVER_PREFIX "/clomon"]}
+ :clomon/targets
+                   [{:type :http :poll-interval 300 :group-name "HTTP" :url "https://example.com/"}
+                    {:type :ping :poll-interval 60 :group-name "Nameservers" :name "CF" :host "1.1.1.1"}
+                    {:type :ping :poll-interval 60 :group-name "External" :name "Google" :host "google.com"}
+
+                    {:type :wol :host "example.com" :mac "aa:bb:aa:bb:aa:bb" :delay 0}]
+ :clomon/outages
+                   [{:from #inst "2019-03-16T09:00:00" :to #inst "2019-03-16T17:00:00" :en "Planned power outage." :ja "計画停電"}
+                    {:from #inst "2019-03-17T09:00:00" :to #inst "2019-03-17T17:00:00" :en "Planned power outage." :ja "計画停電"}]}
