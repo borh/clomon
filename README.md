@@ -4,6 +4,7 @@ CloMon is a personal service monitor and network tool supporting http/s and ping
 
 All checks should be defined in a `config.edn` file within the resources folder (or elsewhere on the JVM classpath).
 There is an example `test.edn` provided.
+Currently, the `config.edn` is included in the `.gitignore` file to prevent credential and infra leaks.
 
 ## Requirements
 
@@ -15,8 +16,12 @@ Run the project directly:
 
     $ clj -m clomon.main
     
-You should se log results in the console as well as the specified logfile.
+You should see log results in the console as well as the specified logfile.
 CloMon provides a web based viewer for the results which can be accessed from [localhost:8081/clomon](http://localhost:8081/clomon).
+
+You can also create an uberjar with:
+
+    $ clojure -A:depstar
 
 ### Issues
 
